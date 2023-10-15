@@ -49,12 +49,12 @@
 
 // pages/api/compile.js
 
-import cors from "cors";
+// import cors from "cors";
 
-const corsMiddleware = cors();
+// const corsMiddleware = cors();
 
 export default async function handler(req, res) {
-  await corsMiddleware(req, res);
+  // await corsMiddleware(req, res);
 
   try {
     const { exec } = require("child_process");
