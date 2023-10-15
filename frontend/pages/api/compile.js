@@ -58,7 +58,7 @@ export default async function handler(req, res) {
 
   try {
     const { exec } = require("child_process");
-    exec("nargo init", (error, stdout, stderr) => {
+    exec("nargo compile", (error, stdout, stderr) => {
       if (error) {
         console.error(`Error: ${error.message}`);
         res.status(500).json({ error: "Compilation failed" });
