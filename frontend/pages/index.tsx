@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
       <main>
         <div>gm</div>
-        <Code />
+        {/* <Code /> */}
       </main>
     </>
   );

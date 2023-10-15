@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const private_key: any = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 
-const Code = () => {
+const NoirCode = () => {
   //   const { address } = useAccount();
   //   const provider = useProvider();
   //   const { data: signer }: any = useSigner();
@@ -289,4 +289,4 @@ const Code = () => {
   );
 };
 
-export default Code;
+export default NoirCode;
