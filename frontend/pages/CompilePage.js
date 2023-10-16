@@ -2,7 +2,11 @@ import React, { useState, useRef, useEffect, useReducer } from "react";
 import Editor, { loader, Monaco } from "@monaco-editor/react";
 
 const CompilePage = () => {
+  // console.log(props);
   const [code, setCode] = useState("");
+  // const [output, setOutput] = useState("");
+  const [fileContent, setFileContent] = useState("");
+  const [compileContent, setCompileFileContent] = useState("");
 
   const handleCodeChange = (event) => {
     setCode(event.target.value);
@@ -10,19 +14,24 @@ const CompilePage = () => {
 
   const handleInitialise = async () => {
     try {
-      const response = await fetch("/api/initialise", {
-        method: "POST",
-        body: JSON.stringify({ code }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      // const response = await fetch("/api/initialise", {
+      //   method: "POST",
+      //   body: JSON.stringify({ code }),
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // });
+      const response = await fetch("/api/initialise");
+      const data = await response.json();
+
+      // setOutput(data.output);
+      setFileContent(data.fileContent);
 
       if (!response.ok) {
         throw new Error("Compilation failed");
       }
 
-      const data = await response.json();
+      // const data = await response.json();
       console.log(data.message);
     } catch (error) {
       console.error(`Error: ${error.message}`);
@@ -31,19 +40,24 @@ const CompilePage = () => {
 
   const handleCompileClick = async () => {
     try {
-      const response = await fetch("/api/compile", {
-        method: "POST",
-        body: JSON.stringify({ code }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      // const response = await fetch("/api/compile", {
+      //   method: "POST",
+      //   body: JSON.stringify({ code }),
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // });
+
+      const response = await fetch("/api/compile");
+      const data = await response.json();
+
+      setCompileFileContent(data.fileContent);
 
       if (!response.ok) {
         throw new Error("Compilation failed");
       }
 
-      const data = await response.json();
+      // const data = await response.json();
       console.log(data.message);
     } catch (error) {
       console.error(`Error: ${error.message}`);
@@ -99,7 +113,7 @@ const CompilePage = () => {
     // console.log(formattedResponse, "formatted response");
 
     if (response.status == 200) {
-      setOutput(formattedResponse);
+      // setOutput(formattedResponse);
       toast({
         title: "Compilation successfull",
         description:
@@ -128,12 +142,33 @@ const CompilePage = () => {
 
   return (
     <div>
-      <h1>Code Compilation</h1>
-      <Editor
-        height="90vh"
-        defaultValue="// some comment"
-        defaultLanguage="javascript"
-      />
+      <div className="flex">
+        {/* Left column with file list */}
+        <div className="w-1/5 p-4 bg-gray-200">
+          <h3 className="text-xl text-black font-bold mb-4">File List</h3>
+          <ul>
+            <li className="cursor-pointer mb-2 hover:underline">
+              {fileContent}
+            </li>
+            <li className="cursor-pointer mb-2 hover:underline">
+              {compileContent}
+            </li>
+          </ul>
+        </div>
+
+        {/* Right column with Monaco Editor */}
+        <div className="w-4/5 p-4">
+          <h3 className="text-xl font-bold mb-4"></h3>
+          <div>
+            <Editor
+              height="50vh"
+              defaultValue={compileContent}
+              defaultLanguage="javascript"
+            />
+          </div>
+        </div>
+      </div>
+
       <br />
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded"
@@ -162,5 +197,13 @@ const CompilePage = () => {
     </div>
   );
 };
+
+// export async function getServerSideProps(context) {
+//   let data = await fetch("http://localhost:3000/api/initialise");
+//   let myprops = await data.json();
+//   return {
+//     props: { myprops },
+//   };
+// }
 
 export default CompilePage;
