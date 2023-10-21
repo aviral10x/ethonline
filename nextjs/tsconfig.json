@@ -21,6 +21,13 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/compileAndExport.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/api/compileAndExport.ts",
+    "pages/dynamic/[circuit].jsx",
+    "pages/circuits/[id].jsx"
+  ],
   "exclude": ["node_modules"]
 }
