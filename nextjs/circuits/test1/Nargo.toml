@@ -1,5 +1,5 @@
 [package]
-name = "htrs"
+name = "test1"
 type = "bin"
 authors = [""]
 compiler_version = "0.10.5"

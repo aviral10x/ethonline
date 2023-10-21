@@ -6,7 +6,7 @@ const test = () => {
   return (
     <div>
       <Navbar />
-      <CircuitUI circuitName="testtt" />
+      <CircuitUI circuitName="test1" />
     </div>
   );
 };

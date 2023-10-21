@@ -42,7 +42,9 @@
     "usehooks-ts": "^2.7.2",
     "viem": "^1.6.7",
     "wagmi": "1.3.10",
-    "zustand": "^4.1.2"
+    "zustand": "^4.1.2",
+    "dotenv": "^16.0.3",
+    "envfile": "^6.18.0"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
@@ -61,6 +63,14 @@
     "prettier": "^2.8.4",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6",
-    "vercel": "^28.15.1"
+    "vercel": "^28.15.1",
+    "@types/chai": "^4.3.5",
+    "@types/eslint": "^8",
+    "@types/mocha": "^9.1.1",
+    "@types/prettier": "^2",
+    "@typescript-eslint/parser": "latest",
+    "chai": "^4.3.6",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1"
   }
 }

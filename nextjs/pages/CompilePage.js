@@ -6,9 +6,11 @@ import Navbar from "@/components/Navbar";
 
 const CompilePage = () => {
   // console.log(props);
-  const [code, setCode] = useState("");
-  const [fileName, setFileName] = useState("");
-  const [filePath, setFilePath] = useState("");
+  // const [code, setCode] = useState("");
+  // const [codeName, setCodeName] = useState("");
+  // const [filePath, setFilePath] = useState("");
+  // const [isSaving, setIsSaving] = useState(false);
+
   const [editorContent, setEditorContent] = useState("");
 
   const [fileContent, setFileContent] = useState("");
@@ -29,13 +31,14 @@ const CompilePage = () => {
 
   function handleEditorChange(value, event) {
     // console.log(value);
+    setEditorContent(value);
   }
 
   const handleNew = async () => {
     try {
       // Prompt the user for a file name (you can use any UI component for this)
       const fileName = prompt("Enter a file name:");
-
+      // setCodeName(fileName);
       if (!fileName) {
         console.error("File name cannot be empty");
         return;
@@ -120,7 +123,7 @@ const CompilePage = () => {
       //   },
       // });
 
-      const response = await fetch("/api/compile");
+      const response = await fetch("/api/compileAndExport");
       const data = await response.json();
 
       setCompileFileContent(data.fileContent);
@@ -214,6 +217,56 @@ const CompilePage = () => {
     }
   }
 
+  // const handleSave = async () => {
+  //   try {
+  //     setIsSaving(true);
+
+  //     // Prompt the user for a file name
+  //     const fileName = codeName;
+  //     console.log(fileName);
+
+  //     if (!fileName) {
+  //       console.error("File name cannot be empty");
+  //       return;
+  //     }
+
+  //     // Prompt the user for content
+  //     const content = editorContent;
+  //     console.log(content);
+
+  //     if (content === null) {
+  //       // The user clicked "Cancel"
+  //       console.log("Content input canceled");
+  //       return;
+  //     }
+
+  //     // Make the API request to save the content to the main.nr file
+  //     const response = await fetch("/api/saveFile", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         fileName,
+  //         content,
+  //       }),
+  //     });
+
+  //     const data = await response.json();
+
+  //     // Check for errors in the API response
+  //     if (!response.ok) {
+  //       throw new Error(`Save failed: ${data.error}`);
+  //     }
+
+  //     console.log(data.message);
+  //   } catch (error) {
+  //     console.error(`Error: ${error.message}`);
+  //   } finally {
+  //     setIsSaving(false);
+  //   }
+  // };
+
   return (
     <div>
       <Navbar />
@@ -282,6 +335,9 @@ const CompilePage = () => {
       >
         Compile Solidity Code
       </button>
+      {/* <button onClick={handleSave} disabled={isSaving}>
+        {isSaving ? "Saving..." : "Save Changes"}
+      </button> */}
     </div>
   );
 };

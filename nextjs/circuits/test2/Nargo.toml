@@ -1,5 +1,5 @@
 [package]
-name = "nextjs"
+name = "test2"
 type = "bin"
 authors = [""]
 compiler_version = "0.10.5"
