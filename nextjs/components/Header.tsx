@@ -2,9 +2,10 @@ import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Bars3Icon, BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { SwitchTheme } from "@/components/SwitchTheme";
 import { FaucetButton, RainbowKitCustomConnectButton } from "@/components/scaffold-eth";
 import { useOutsideClick } from "@/hooks/scaffold-eth";
-import { Bars3Icon, BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const router = useRouter();
@@ -37,9 +38,15 @@ export const Header = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink href="/age-restricted-example">
-          <span className="h-4 w-4">🎈</span>
-          ZK Age Restriction
+        <NavLink href="/CompilePage">
+          <span className="h-4 w-4">🧑‍💻</span>
+          Deploy
+        </NavLink>
+      </li>
+      <li>
+        <NavLink href="/circuits">
+          <span className="h-4 w-4">⛓️</span>
+          Interact with Circuits and Generate Proof
         </NavLink>
       </li>
       <li>
@@ -48,6 +55,7 @@ export const Header = () => {
           Debug Contracts
         </NavLink>
       </li>
+
       <li>
         <NavLink href="/blockexplorer">
           <MagnifyingGlassIcon className="h-4 w-4" />
@@ -83,12 +91,8 @@ export const Header = () => {
           )}
         </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
-          <div className="flex relative w-10 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer bg-white rounded-md" fill src="/logo.svg" />
-          </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">Scaffold-ETH Noir</span>
-            <span className="text-xs">Showcasing zero-knowledge with Noir-lang</span>
+            <span className="font-bold leading-tight">REMIX FOR NOIR</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">{navLinks}</ul>
@@ -97,6 +101,8 @@ export const Header = () => {
         <RainbowKitCustomConnectButton />
         <FaucetButton />
       </div>
+      <SwitchTheme className="pointer-events-auto" />
+      <div></div>
     </div>
   );
 };

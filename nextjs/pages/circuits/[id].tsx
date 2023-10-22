@@ -7,7 +7,6 @@ import { CircuitName } from "@/utils/noir/circuit";
 const CircuitPage = () => {
   const router = useRouter();
   const { id } = router.query;
-  console.log(typeof id);
 
   return (
     <div>

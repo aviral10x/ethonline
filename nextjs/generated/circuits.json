@@ -1,38 +1,4 @@
 {
- "jhsdv": {
-  "backend": "acvm-backend-barretenberg",
-  "abi": {
-   "parameters": [
-    {
-     "name": "x",
-     "type": {
-      "kind": "field"
-     },
-     "visibility": "private"
-    },
-    {
-     "name": "y",
-     "type": {
-      "kind": "field"
-     },
-     "visibility": "public"
-    }
-   ],
-   "param_witnesses": {
-    "x": [
-     1
-    ],
-    "y": [
-     2
-    ]
-   },
-   "return_type": null,
-   "return_witnesses": []
-  },
-  "bytecode": "H4sIAAAAAAAA/7WTMRLEIAhFMYkp9ywgGrHbq6yz5v5H2JkdCyaxC9LgWDw+H9gBwMM91p7fPeOzIKdYjEeMLYdGTB8MpUrCmOohJJQkfYMwN4mSSy0ZC0VudKbCZ4cthqzVrsc/yw28dMZeWmrWerfBexnsxD6hJ7jUufr4GvyZFp8xpG0C14Pd8s/q29vPCBXypvmpDx7sD8opnfqIfsM1RNtxBQAA",
-  "proving_key": null,
-  "verification_key": null
- },
  "test1": {
   "backend": "acvm-backend-barretenberg",
   "abi": {
@@ -101,19 +67,19 @@
   "proving_key": null,
   "verification_key": null
  },
- "testx": {
+ "testnum": {
   "backend": "acvm-backend-barretenberg",
   "abi": {
    "parameters": [
     {
-     "name": "a",
+     "name": "x",
      "type": {
       "kind": "field"
      },
      "visibility": "private"
     },
     {
-     "name": "b",
+     "name": "y",
      "type": {
       "kind": "field"
      },
@@ -121,10 +87,44 @@
     }
    ],
    "param_witnesses": {
-    "a": [
+    "x": [
      1
     ],
-    "b": [
+    "y": [
+     2
+    ]
+   },
+   "return_type": null,
+   "return_witnesses": []
+  },
+  "bytecode": "H4sIAAAAAAAA/7WTMRLEIAhFMYkp9ywgGrHbq6yz5v5H2JkdCyaxC9LgWDw+H9gBwMM91p7fPeOzIKdYjEeMLYdGTB8MpUrCmOohJJQkfYMwN4mSSy0ZC0VudKbCZ4cthqzVrsc/yw28dMZeWmrWerfBexnsxD6hJ7jUufr4GvyZFp8xpG0C14Pd8s/q29vPCBXypvmpDx7sD8opnfqIfsM1RNtxBQAA",
+  "proving_key": null,
+  "verification_key": null
+ },
+ "tt": {
+  "backend": "acvm-backend-barretenberg",
+  "abi": {
+   "parameters": [
+    {
+     "name": "x",
+     "type": {
+      "kind": "field"
+     },
+     "visibility": "private"
+    },
+    {
+     "name": "y",
+     "type": {
+      "kind": "field"
+     },
+     "visibility": "public"
+    }
+   ],
+   "param_witnesses": {
+    "x": [
+     1
+    ],
+    "y": [
      2
     ]
    },

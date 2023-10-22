@@ -2,14 +2,13 @@ import React, { useEffect, useReducer, useRef, useState } from "react";
 // import circuits from "../circuits/";
 import Editor, { Monaco, loader } from "@monaco-editor/react";
 import { readFile } from "fs/promises";
-import Navbar from "@/components/Navbar";
 
 const CompilePage = () => {
   // console.log(props);
   // const [code, setCode] = useState("");
-  // const [codeName, setCodeName] = useState("");
+  const [codeName, setCodeName] = useState("");
   // const [filePath, setFilePath] = useState("");
-  // const [isSaving, setIsSaving] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   const [editorContent, setEditorContent] = useState("");
 
@@ -19,15 +18,15 @@ const CompilePage = () => {
   const [compileContent, setCompileFileContent] = useState("");
   const [verifyContent, setVerifyFileContent] = useState("");
 
-  const editorRef = useRef("");
-  console.log(editorRef);
+  // const editorRef = useRef("");
+  // console.log(editorRef);
 
-  function handleEditorDidMount(editor, monaco) {
-    // here is the editor instance
-    // you can store it in `useRef` for further usage
-    editorRef.current = editor;
-    console.log(editor);
-  }
+  // function handleEditorDidMount(editor, monaco) {
+  //   // here is the editor instance
+  //   // you can store it in `useRef` for further usage
+  //   editorRef.current = editor;
+  //   console.log(editor);
+  // }
 
   function handleEditorChange(value, event) {
     // console.log(value);
@@ -139,150 +138,57 @@ const CompilePage = () => {
     }
   };
 
-  const handleVerify = async () => {
+  async function handleSolidityCompile() {
     try {
-      // const response = await fetch("/api/verify", {
-      //   method: "POST",
-      //   body: JSON.stringify({ code }),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // });
-      const response = await fetch("/api/verify");
+      const response = await fetch(`/api/compileAndExportSol`);
       const data = await response.json();
-
-      setVerifyFileContent(data.fileContent);
+      console.log(data);
 
       if (!response.ok) {
-        throw new Error("Compilation failed");
+        const data = await response.json();
+        console.error(`Export failed: ${data.error}`);
       }
-
-      // const data = await response.json();
-      console.log(data.message);
     } catch (error) {
       console.error(`Error: ${error.message}`);
     }
-  };
-
-  async function handleSolidityCompile() {
-    if (!sourceCode) {
-      toast({
-        title: "No source code",
-        description: "You need to provide source code to perform compilation!!!",
-        status: "warning",
-        duration: 2000,
-        isClosable: true,
-      });
-      // console.log("no Source code set");
-      return;
-    }
-
-    /// For proper handling we can change the API call format
-    const response = await fetch("./api/compile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ sourceCode }),
-    });
-
-    console.log(response);
-    const formattedResponse = (await response.json()).output;
-    // console.log(formattedResponse, "formatted response");
-
-    if (response.status == 200) {
-      // setOutput(formattedResponse);
-      toast({
-        title: "Compilation successfull",
-        description: "Your code was compiled succesfully, You can deploy your contract now.",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-      });
-      // console.log("Successfully Compiled");
-      setError("Successfully Compiled");
-      /// analyze the ABI and show const
-      handleABI(formattedResponse.abi);
-
-      setCompiled(true);
-    } else {
-      setError(formattedResponse);
-      toast({
-        title: "Compilation error",
-        description: `${formattedResponse}`,
-        status: "error",
-        duration: 2700,
-        isClosable: true,
-      });
-    }
   }
 
-  // const handleSave = async () => {
-  //   try {
-  //     setIsSaving(true);
+  const handleSave = async fileName => {
+    try {
+      setIsSaving(true);
 
-  //     // Prompt the user for a file name
-  //     const fileName = codeName;
-  //     console.log(fileName);
+      const content = editorContent;
+      console.log(typeof content);
 
-  //     if (!fileName) {
-  //       console.error("File name cannot be empty");
-  //       return;
-  //     }
+      const response = await fetch(`/api/saveFile?fileName=${fileName}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fileName,
+          content,
+        }),
+      });
 
-  //     // Prompt the user for content
-  //     const content = editorContent;
-  //     console.log(content);
+      const data = await response.json();
 
-  //     if (content === null) {
-  //       // The user clicked "Cancel"
-  //       console.log("Content input canceled");
-  //       return;
-  //     }
+      if (!response.ok) {
+        throw new Error(`Save failed: ${data.error}`);
+      }
 
-  //     // Make the API request to save the content to the main.nr file
-  //     const response = await fetch("/api/saveFile", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         fileName,
-  //         content,
-  //       }),
-  //     });
-
-  //     const data = await response.json();
-
-  //     // Check for errors in the API response
-  //     if (!response.ok) {
-  //       throw new Error(`Save failed: ${data.error}`);
-  //     }
-
-  //     console.log(data.message);
-  //   } catch (error) {
-  //     console.error(`Error: ${error.message}`);
-  //   } finally {
-  //     setIsSaving(false);
-  //   }
-  // };
+      console.log(data.message);
+    } catch (error) {
+      console.error(`Error: ${error.message}`);
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   return (
     <div>
-      <Navbar />
       <div className="flex">
-        {/* Left column with file list */}
-        <div className="w-1/5 p-4 bg-gray-200">
-          <h3 className="text-xl text-black font-bold mb-4">File List</h3>
-          <ul>
-            <li className="cursor-pointer mb-2 hover:underline">{fileContent}</li>
-            <li className="cursor-pointer mb-2 hover:underline">{compileContent}</li>
-            <li className="cursor-pointer mb-2 hover:underline">{verifyContent}</li>
-          </ul>
-        </div>
-
-        {/* Right column with Monaco Editor */}
-        <div className="w-4/5 p-4">
+        <div className="w-full p-4">
           <h3 className="text-xl font-bold mb-4"></h3>
           <div>
             <Editor
@@ -293,7 +199,7 @@ const CompilePage = () => {
               theme="vs-dark"
               onChange={handleEditorChange}
               defaultValue={newFileContent}
-              onMount={handleEditorDidMount}
+              // onMount={handleEditorDidMount}
               value={editorContent}
             />
           </div>
@@ -325,19 +231,17 @@ const CompilePage = () => {
       </button>
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded"
-        onClick={handleVerify}
-      >
-        Verify Code
-      </button>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded"
         onClick={handleSolidityCompile}
       >
         Compile Solidity Code
       </button>
-      {/* <button onClick={handleSave} disabled={isSaving}>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded"
+        onClick={handleSave}
+        disabled={isSaving}
+      >
         {isSaving ? "Saving..." : "Save Changes"}
-      </button> */}
+      </button>
     </div>
   );
 };
