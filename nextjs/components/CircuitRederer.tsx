@@ -11,7 +11,7 @@ const CircuitRenderer: React.FC<CircuitRendererProps> = ({ circuits }) => {
   return (
     <div>
       {Object.keys(circuits).map(circuitName => (
-        <CircuitUI key={circuitName} circuitName={circuitName as CircuitName} />
+        <CircuitUI key={circuitName} circuitName={circuitName as CircuitName} className="p-2" />
       ))}
     </div>
   );

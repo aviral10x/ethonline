@@ -26,7 +26,7 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: "scrollSepolia",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -106,11 +106,30 @@ const config: HardhatUserConfig = {
       url: "https://goerli.base.org",
       accounts: [deployerPrivateKey],
     },
+    scrollSepolia: {
+      url: "https://sepolia-rpc.scroll.io" || "",
+      accounts: [deployerPrivateKey],
+    },
   },
   verify: {
     etherscan: {
       apiKey: `${etherscanApiKey}`,
     },
+  },
+  etherscan: {
+    apiKey: {
+      scrollSepolia: "abc",
+    },
+    customChains: [
+      {
+        network: "scrollSepolia",
+        chainId: 534351,
+        urls: {
+          apiURL: "https://sepolia-blockscout.scroll.io/api",
+          browserURL: "https://sepolia-blockscout.scroll.io/",
+        },
+      },
+    ],
   },
 };
 

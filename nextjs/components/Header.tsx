@@ -56,10 +56,16 @@ export const Header = () => {
         </NavLink>
       </li>
 
-      <li>
+      {/* <li>
         <NavLink href="/blockexplorer">
           <MagnifyingGlassIcon className="h-4 w-4" />
           Block Explorer
+        </NavLink>
+      </li> */}
+      <li>
+        <NavLink href="/ipfs">
+          <span className="h-4 w-4">🌐</span>
+          Upload to IPFS
         </NavLink>
       </li>
     </>

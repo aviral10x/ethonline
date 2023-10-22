@@ -47,19 +47,6 @@ export const CircuitUI = ({ circuitName, className = "" }: CircuitUIProps) => {
               <div className="p-5 divide-y divide-base-300">{circuitCallFormDisplay || "No read methods"}</div>
             </div>
           </div>
-          <div className="z-10">
-            <div className="bg-base-100 rounded-3xl shadow-md shadow-secondary border border-base-300 flex flex-col mt-10 relative">
-              <div className="h-[5rem] w-[5.5rem] bg-base-300 absolute self-start rounded-[22px] -top-[38px] -left-[1px] -z-10 py-[0.65rem] shadow-lg shadow-base-300">
-                <div className="flex items-center justify-center space-x-2">
-                  <p className="my-0 text-sm">Verify 🔍</p>
-                </div>
-              </div>
-              <div className="p-5 divide-y divide-base-300">
-                <p>Verification is currently only done on-chain.</p>
-                {/* TODO */}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
