@@ -10,6 +10,7 @@ Remix For Noir will make it easier for developers to use and build on Aztec Chai
 2. Run `yarn deploy --reset` in terminal 2 to deploy the contracts
 3. cd `nextjs` and run `yarn` in terminal 3
 4. Run `yarn start` 3 to run the UI
+5. Watch this video here to interact with the UI properly => https://ethglobal.com/showcase/noir-explorer-4nswg
 
 # Prerequisites
 
