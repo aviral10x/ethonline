@@ -1,6 +1,6 @@
 ## REMIX FOR NOIR
 
-If you are a builder on the Aztec or love Noir, then REMIX FOR NOIR is for you.
+Remix For Noir offers a user-friendly interface to write, test, and deploy Noir circuits and their Solidity Verifiers.
 
 # Running the project
 
@@ -18,11 +18,11 @@ If you are a builder on the Aztec or love Noir, then REMIX FOR NOIR is for you.
 
 ### What is this and what was this built for?
 
-REMIX FOR NOIR was built for the purpose of improving the developer experience on the Aztec Chain, For Noir to be used and adopted widely the developer experience has to improve, And REMIX FOR NOIR was built with the same goal. Not only does it improve the deployment, interaction and verification process but it also allows developers to build applications on top of Aztec using the apis that it provides.
+REMIX FOR NOIR was built for the purpose of improving the developer experience on the Aztec Chain, For Noir to be used and adopted widely the developer experience has to improve, And REMIX FOR NOIR was built with the same goal. Not only does it improve the deployment, interaction and verification process but it also allows developers to build applications on top of Aztec using the APIs that it provides.
 
 ### Why REMIX FOR NOIR?
 
-Interaction with contracts on Noir is difficult on it's own and REMIX ON NOIR not only allows developers to interact with thier smart contracts but it also allows developers to deploy and verify their smart contracts with a very easy to use User interface. And if that were'nt enough it also allows developers to build on top of Aztec using the Apis that it provides.
+Interaction with contracts on Noir is difficult on its own and REMIX ON NOIR not only allows developers to interact with their smart contracts but also allows developers to deploy and verify their smart contracts with a very easy-to-use User interface. And if that weren't enough it also allows developers to build on top of Aztec using the Apis that it provides.
 
 ## Problem which REMIX FOR NOIR solves.
 
