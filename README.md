@@ -56,16 +56,27 @@ These Solidity Verifiers can then be used in any EVM chain by retrieving the con
 
 ## Images
 
-Landing Page
+- Landing Page
+  
 ![Screenshot 2023-10-22 at 8 42 59 PM](https://github.com/aviral10x/ethonline/assets/91749530/af6f3048-2f06-4be3-b843-6b94b373fe08)
-Code Editor
+- Code Editor
+  
 ![Screenshot 2023-10-22 at 8 44 11 PM](https://github.com/aviral10x/ethonline/assets/91749530/89c69b54-1741-4c4c-852b-7a8b8320b54e)
-Interact with Noir Circuit - Read and Write Functions and Generate Prooof
+
+- Interact with Noir Circuit - Read and Write Functions and Generate Proof
+  
 ![Screenshot 2023-10-22 at 8 45 17 PM](https://github.com/aviral10x/ethonline/assets/91749530/bf14617d-7553-44ca-b9d3-bf9efdd010c7)
-Generate and Interact with Solidity Verifiers
+
+- Generate and Interact with Solidity Verifiers
+  
 ![Screenshot 2023-10-22 at 8 44 34 PM](https://github.com/aviral10x/ethonline/assets/91749530/06c5f405-c12f-4433-bd73-739e4e4b5566)
 
+## Roadmap
 
+- Fix the major bugs
+- Make the dynamic folder and file routes for the circuits
+- Currently, I've used @aztec/bb.js and @noir-lang/acvm_js for the project but later on, I'll update the project with the new @noir-lang/noir_js.
+- Apply for the Aztec Grants Program
 
 
 ## Developer
