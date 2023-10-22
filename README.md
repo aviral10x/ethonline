@@ -20,6 +20,7 @@ Remix For Noir offers a user-friendly interface to write, test, and deploy Noir 
 
 REMIX FOR NOIR was built for the purpose of improving the developer experience on the Aztec Chain, For Noir to be used and adopted widely the developer experience has to improve, And REMIX FOR NOIR was built with the same goal. Not only does it improve the deployment, interaction and verification process but it also allows developers to build applications on top of Aztec using the APIs that it provides.
 
+
 ### Why REMIX FOR NOIR?
 
 Interaction with contracts on Noir is difficult on its own and REMIX ON NOIR not only allows developers to interact with their smart contracts but also allows developers to deploy and verify their smart contracts with a very easy-to-use User interface. And if that weren't enough it also allows developers to build on top of Aztec using the Apis that it provides.
@@ -51,6 +52,11 @@ The Filecoin Virtual Machine (FVM) is a runtime environment enabling users to de
 You can deploy your Smart Contracts written on Noir on the Filecoin Virtual Machine.
 
 ## Images
+
+![Screenshot 2023-10-22 at 8 45 17 PM](https://github.com/aviral10x/ethonline/assets/91749530/bf14617d-7553-44ca-b9d3-bf9efdd010c7)
+![Screenshot 2023-10-22 at 8 44 34 PM](https://github.com/aviral10x/ethonline/assets/91749530/06c5f405-c12f-4433-bd73-739e4e4b5566)
+![Screenshot 2023-10-22 at 8 44 11 PM](https://github.com/aviral10x/ethonline/assets/91749530/89c69b54-1741-4c4c-852b-7a8b8320b54e)
+![Screenshot 2023-10-22 at 8 42 59 PM](https://github.com/aviral10x/ethonline/assets/91749530/af6f3048-2f06-4be3-b843-6b94b373fe08)
 
 ## Developer
 
